@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Rick And Morty</string>
+    <string name="name">Name</string>
+    <string name="status">Status</string>
+    <string name="last_known_location">Last known location:</string>
+    <string name="first_seen_in">First seen in:</string>
+    <string name="unknown">Unknown</string>
+    <string name="character_id">Character ID</string>
+    <string name="search">Search</string>
+</resources>

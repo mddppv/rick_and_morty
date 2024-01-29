@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="statusBar">@color/background</color>
+    <color name="background">#FF252525</color>
+    <color name="black">#FF000000</color>
+    <color name="dark">#FF757575</color>
+    <color name="gray">#FF909090</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
