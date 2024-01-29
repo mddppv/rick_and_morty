@@ -1,7 +1,7 @@
-package com.example.rickandmorty.di
+package com.example.rickandmorty.core.di
 
 import com.example.rickandmorty.BuildConfig
-import com.example.rickandmorty.data.CartoonApiService
+import com.example.rickandmorty.data.api.CartoonApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

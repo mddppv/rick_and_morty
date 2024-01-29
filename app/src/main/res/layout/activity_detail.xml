@@ -6,7 +6,7 @@
     android:background="@color/background"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".DetailActivity">
+    tools:context=".presentation.detailScreen.DetailActivity">
 
     <ImageView
         android:id="@+id/iv_character_image"

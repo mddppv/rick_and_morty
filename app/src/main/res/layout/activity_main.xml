@@ -7,7 +7,7 @@
     android:background="@color/background"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context=".MainActivity">
+    tools:context=".presentation.mainScreen.MainActivity">
 
     <EditText
         android:id="@+id/et_character_id"
