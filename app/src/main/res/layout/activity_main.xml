@@ -9,25 +9,6 @@
     android:padding="8dp"
     tools:context=".presentation.mainScreen.MainActivity">
 
-    <EditText
-        android:id="@+id/et_character_id"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:backgroundTint="@color/gray"
-        android:hint="@string/character_id"
-        android:paddingHorizontal="16dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/gray" />
-
-    <Button
-        android:id="@+id/btn_character_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/gray"
-        android:text="@string/search"
-        android:textColor="@color/white" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_characters"
         android:layout_width="match_parent"

@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
 
         requestData()
         observeData()
-        initListener()
         initAdapter()
 
     }
@@ -46,18 +45,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun requestData() {
         viewModel.getCharacters()
+        viewModel.getEpisodes()
     }
 
     private fun observeData() {
         viewModel.characters.observe(this) { characters ->
-            cartoonAdapter.setData(characters)
+            cartoonAdapter.setCartoonData(characters)
         }
-    }
-
-    private fun initListener() {
-        binding.btnCharacterSearch.setOnClickListener {
-            val characterId = binding.etCharacterId.text.toString()
-            navigateToDetail(characterId)
+        viewModel.episodes.observe(this) { episodes ->
+            cartoonAdapter.setEpisodeData(episodes)
         }
     }
 

@@ -7,4 +7,11 @@
     <string name="unknown">Unknown</string>
     <string name="character_id">Character ID</string>
     <string name="search">Search</string>
+    <string name="air_date_">Air Date:</string>
+    <string name="air_date">Air Date</string>
+    <string name="name_">Name:</string>
+    <string name="episode">Episode</string>
+    <string name="season">Season</string>
+    <string name="minus">-</string>
+    <string name="species">Species</string>
 </resources>

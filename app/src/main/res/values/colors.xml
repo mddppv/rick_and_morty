@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="statusBar">@color/background</color>
-    <color name="background">#FF252525</color>
+    <color name="background">#272B33</color>
     <color name="black">#FF000000</color>
-    <color name="dark">#FF757575</color>
-    <color name="gray">#FF909090</color>
+    <color name="dark">#3C3E44</color>
+    <color name="gray">#89898B</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="green">#55CC44</color>
+    <color name="red">#D63D2E</color>
 </resources>
