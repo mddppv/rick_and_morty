@@ -1,7 +1,9 @@
 package com.example.rickandmorty.presentation.detailScreen
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
@@ -9,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.rickandmorty.R
 import com.example.rickandmorty.databinding.ActivityDetailBinding
 import com.example.rickandmorty.presentation.mainScreen.MainActivity
+import com.example.rickandmorty.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -68,8 +71,7 @@ class DetailActivity : AppCompatActivity() {
                     tvCharacterLocation.text = cartoon.location.name
                     tvCharacterSpecies.text = cartoon.species
 
-                    Glide.with(ivCharacterImage).load(cartoon.image)
-                        .into(ivCharacterImage)
+                    Glide.with(ivCharacterImage).load(cartoon.image).into(ivCharacterImage)
 
                     when (cartoon.status) {
                         "unknown" -> ivCharacterStatus.setBackgroundResource(R.drawable.circle_default)

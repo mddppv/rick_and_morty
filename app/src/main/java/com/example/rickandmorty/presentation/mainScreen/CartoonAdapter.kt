@@ -37,7 +37,6 @@ class CartoonAdapter(onClick: (Int) -> Unit) : RecyclerView.Adapter<CartoonAdapt
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val cartoon = cartoonList[position]
-        episodeList[position]
         holder.bind(cartoon)
     }
 
