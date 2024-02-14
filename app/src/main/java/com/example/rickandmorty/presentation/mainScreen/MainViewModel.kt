@@ -13,8 +13,7 @@ import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import javax.inject.Inject
 
-@HiltViewModel
-class MainViewModel @Inject constructor(
+class MainViewModel (
     private val cartoonApiService: CartoonApiService
 ) : ViewModel() {
 

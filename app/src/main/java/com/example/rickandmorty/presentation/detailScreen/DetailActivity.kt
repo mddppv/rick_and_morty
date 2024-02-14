@@ -1,26 +1,19 @@
 package com.example.rickandmorty.presentation.detailScreen
 
 import android.os.Bundle
-import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.rickandmorty.R
 import com.example.rickandmorty.databinding.ActivityDetailBinding
 import com.example.rickandmorty.presentation.mainScreen.MainActivity
-import com.example.rickandmorty.utils.Resource
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
-    private val viewModel: DetailsViewModel by lazy {
-        ViewModelProvider(this)[DetailsViewModel::class.java]
-    }
+    private val viewModel: DetailsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
