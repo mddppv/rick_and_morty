@@ -5,27 +5,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.rickandmorty.R
-import com.example.rickandmorty.data.model.CartoonEpisodeModel
 import com.example.rickandmorty.data.model.CartoonModel
 import com.example.rickandmorty.databinding.ItemCharacterBinding
+import com.example.rickandmorty.utils.CharacterStatus
+import java.util.Locale
 
 @SuppressLint("NotifyDataSetChanged")
 class CartoonAdapter(onClick: (Int) -> Unit) : RecyclerView.Adapter<CartoonAdapter.ViewHolder>() {
 
     private val cartoonList: MutableList<CartoonModel.Result> = mutableListOf()
-    private val episodeList: MutableList<CartoonEpisodeModel.Result> = mutableListOf()
     private val onItemClick: (Int) -> Unit = onClick
 
     fun setCartoonData(newCartoons: List<CartoonModel.Result>) {
         cartoonList.clear()
         cartoonList.addAll(newCartoons)
-        notifyDataSetChanged()
-    }
-
-    fun setEpisodeData(newEpisodes: List<CartoonEpisodeModel.Result>) {
-        episodeList.clear()
-        episodeList.addAll(newEpisodes)
         notifyDataSetChanged()
     }
 
@@ -51,17 +44,24 @@ class CartoonAdapter(onClick: (Int) -> Unit) : RecyclerView.Adapter<CartoonAdapt
                 tvCharacterLocation.text = cartoon.location.name
                 tvCharacterSpecies.text = cartoon.species
 
-                Glide.with(ivCharacterImage).load(cartoon.image)
-                    .into(ivCharacterImage)
+                Glide.with(ivCharacterImage).load(cartoon.image).into(ivCharacterImage)
 
                 itemCharacterContent.setOnClickListener {
                     onItemClick(cartoon.id)
                 }
 
-                when (cartoon.status) {
-                    "unknown" -> ivCharacterStatus.setBackgroundResource(R.drawable.circle_default)
-                    "Alive" -> ivCharacterStatus.setBackgroundResource(R.drawable.circle_green)
-                    "Dead" -> ivCharacterStatus.setBackgroundResource(R.drawable.circle_red)
+                when (CharacterStatus.valueOf(cartoon.status.uppercase(Locale.getDefault()))) {
+                    CharacterStatus.ALIVE -> binding.ivCharacterStatus.setBackgroundResource(
+                        CharacterStatus.ALIVE.drawableResource
+                    )
+
+                    CharacterStatus.DEAD -> binding.ivCharacterStatus.setBackgroundResource(
+                        CharacterStatus.DEAD.drawableResource
+                    )
+
+                    CharacterStatus.UNKNOWN -> binding.ivCharacterStatus.setBackgroundResource(
+                        CharacterStatus.UNKNOWN.drawableResource
+                    )
                 }
             }
         }

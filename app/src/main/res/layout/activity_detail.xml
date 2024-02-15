@@ -81,6 +81,25 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:maxLines="1"
+            android:text="@string/gender"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_character_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@string/unknown"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:maxLines="1"
             android:text="@string/last_known_location"
             android:textColor="@color/gray"
             android:textSize="14sp" />
@@ -95,7 +114,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/tv_second"
+            android:id="@+id/tv_third"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

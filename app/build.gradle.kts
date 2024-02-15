@@ -73,5 +73,5 @@ dependencies {
 
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
-    implementation ("io.insert-koin:koin-android:3.5.0")
+    implementation("io.insert-koin:koin-android:3.5.0")
 }

@@ -9,17 +9,20 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmorty.databinding.ActivityMainBinding
 import com.example.rickandmorty.presentation.detailScreen.DetailActivity
+import com.example.rickandmorty.utils.BaseActivity
 import com.example.rickandmorty.utils.Resource
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModel()
 
-    private val cartoonAdapter = CartoonAdapter(onClick = { cartoonId ->
-        navigateToDetail(cartoonId.toString())
-    })
+    private val cartoonAdapter = CartoonAdapter(
+        onClick = { cartoonId ->
+            navigateToDetail(cartoonId.toString())
+        }
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,54 +30,32 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         requestData()
-        observeData()
         initAdapter()
 
+    }
+
+    private fun requestData() {
+        viewModel.getCharacters().observe(this) { resource ->
+            when (resource) {
+                is Resource.Loading -> binding.progressIndicator.isVisible = true
+                is Resource.Success -> {
+                    binding.progressIndicator.isVisible = false
+                    resource.data?.let { cartoonAdapter.setCartoonData(it) }
+                }
+
+                is Resource.Error -> {
+                    binding.progressIndicator.isVisible = false
+                    Toast.makeText(this, resource.message ?: "Unknown error", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        }
     }
 
     private fun initAdapter() {
         binding.rvCharacters.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = cartoonAdapter
-        }
-    }
-
-    private fun requestData() {
-        viewModel.getCharacters()
-        viewModel.getEpisodes()
-    }
-
-    private fun observeData() {
-        viewModel.characters.observe(this) { resource ->
-            binding.progressIndicator.isVisible = resource is Resource.Loading
-            when (resource) {
-                is Resource.Loading -> {
-                }
-
-                is Resource.Success -> {
-                    resource.data?.let { cartoonAdapter.setCartoonData(it) }
-                }
-
-                is Resource.Error -> {
-                    Toast.makeText(this, resource.message, Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-
-        viewModel.episodes.observe(this) { resource ->
-            binding.progressIndicator.isVisible = resource is Resource.Loading
-            when (resource) {
-                is Resource.Loading -> {
-                }
-
-                is Resource.Success -> {
-                    resource.data?.let { cartoonAdapter.setEpisodeData(it) }
-                }
-
-                is Resource.Error -> {
-                    Toast.makeText(this, resource.message, Toast.LENGTH_SHORT).show()
-                }
-            }
         }
     }
 

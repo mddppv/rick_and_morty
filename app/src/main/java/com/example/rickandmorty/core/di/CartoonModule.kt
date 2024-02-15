@@ -1,6 +1,7 @@
 package com.example.rickandmorty.core.di
 
 import com.example.rickandmorty.BuildConfig
+import com.example.rickandmorty.data.Repository
 import com.example.rickandmorty.data.api.CartoonApiService
 import com.example.rickandmorty.presentation.detailScreen.DetailsViewModel
 import com.example.rickandmorty.presentation.mainScreen.MainViewModel
@@ -19,7 +20,7 @@ val networkModule = module {
         provideRetrofit(get())
     }
 
-    factory {
+    single {
         provideOkHttpClient(get())
     }
 
@@ -30,7 +31,13 @@ val networkModule = module {
     single {
         provideCartoonApiService(get())
     }
+}
 
+val repositoryModule = module {
+    single { Repository(get()) }
+}
+
+val viewModelModule = module {
     viewModel {
         DetailsViewModel(get())
     }
